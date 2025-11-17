@@ -282,7 +282,7 @@ print(f"Categorical Model built with {tree_model_cat.get_n_leaves()} terminal no
 
 
 
-1. **Numerical vs Categorical Analysis:** Provide a clear, well-reasoned answer to question 1 about how zip codes should be modelled. Your answer should demonstrate understanding of why categorical variables need special treatment in decision trees.
+# 1. **Numerical vs Categorical Analysis:** Provide a clear, well-reasoned answer to question 1 about how zip codes should be modelled. Your answer should demonstrate understanding of why categorical variables need special treatment in decision trees.
 
 # Answer
 Calculate and visualize the feature importances for both decision tree models (one with `zipCode` as numerical, one with `zipCode` as categorical), then compare and interpret the results, summarizing the impact of numerical vs. categorical encoding of `zipCode` on feature importance.
@@ -368,7 +368,7 @@ However, the lack of importance for *any* `zipCode` representation (either numer
 While the *method* of encoding categorical variables correctly is crucial for model interpretability and avoiding meaningless numerical splits, in this particular limited-depth decision tree, `zipCode` (whether numerical or one-hot encoded) did not emerge as an important feature. The problem description itself highlights that 'zipCode < 50012.5' is meaningless. By one-hot encoding, we remove this meaningless numerical order, even if the individual dummy variables didn't contribute to the tree splits. This result, therefore, confirms that treating `zipCode` as numerical would indeed lead to misleading insights about its importance (or lack thereof), whereas one-hot encoding, while also showing zero importance in this shallow tree, at least correctly represents the variable's categorical nature.
 
 
-2. **R vs Python Implementation Analysis:** Provide a thorough analysis of question 2, including investigation of the official documentation for both `rpart` (R) and `sklearn.tree.DecisionTreeRegressor` (Python). Your analysis should explain the technical differences and provide a reasoned opinion about which implementation handles categorical variables better.  You do NOT have to run R-code.
+# 2. **R vs Python Implementation Analysis:** Provide a thorough analysis of question 2, including investigation of the official documentation for both `rpart` (R) and `sklearn.tree.DecisionTreeRegressor` (Python). Your analysis should explain the technical differences and provide a reasoned opinion about which implementation handles categorical variables better.  You do NOT have to run R-code.
 
 # Answer
 ## Research rpart Categorical Handling
@@ -428,7 +428,7 @@ The official scikit-learn documentation for decision trees implicitly highlights
 This quote, while general to all estimators, underscores that scikit-learn's design philosophy mandates numerical input for features, thus requiring categorical variables to be pre-processed into a numerical format before being fed to `DecisionTreeRegressor`.
 
 
-3. **Professional Presentation:** Your discussion answers should be written in a professional, engaging style that would be appropriate for a business audience learning about one-hot encoding and decision trees. Avoid technical jargon and focus on practical implications.  Include a specific quote from the official documentation of `sklearn.tree.DecisionTreeRegressor` that supports your analysis. 
+# 3. **Professional Presentation:** Your discussion answers should be written in a professional, engaging style that would be appropriate for a business audience learning about one-hot encoding and decision trees. Avoid technical jargon and focus on practical implications.  Include a specific quote from the official documentation of `sklearn.tree.DecisionTreeRegressor` that supports your analysis. 
 
 **Answer:**
 

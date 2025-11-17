@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div id="45f4a5a8" class="cell" data-execution_count="8">
+<div id="b2889b57" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Categorical Model built with 8 terminal nodes</code></pre>
 </div>
@@ -209,10 +209,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="discussion-questions-for-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-questions-for-challenge">Discussion Questions for Challenge</h2>
-<ol type="1">
-<li><strong>Numerical vs Categorical Analysis:</strong> Provide a clear, well-reasoned answer to question 1 about how zip codes should be modelled. Your answer should demonstrate understanding of why categorical variables need special treatment in decision trees.</li>
-</ol>
 </section>
+</section>
+<section id="numerical-vs-categorical-analysis-provide-a-clear-well-reasoned-answer-to-question-1-about-how-zip-codes-should-be-modelled.-your-answer-should-demonstrate-understanding-of-why-categorical-variables-need-special-treatment-in-decision-trees." class="level1">
+<h1>1. <strong>Numerical vs Categorical Analysis:</strong> Provide a clear, well-reasoned answer to question 1 about how zip codes should be modelled. Your answer should demonstrate understanding of why categorical variables need special treatment in decision trees.</h1>
 </section>
 <section id="answer" class="level1">
 <h1>Answer</h1>
@@ -313,11 +313,11 @@ dtype: float64</code></pre>
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion:</h3>
 <p>While the <em>method</em> of encoding categorical variables correctly is crucial for model interpretability and avoiding meaningless numerical splits, in this particular limited-depth decision tree, <code>zipCode</code> (whether numerical or one-hot encoded) did not emerge as an important feature. The problem description itself highlights that ‘zipCode &lt; 50012.5’ is meaningless. By one-hot encoding, we remove this meaningless numerical order, even if the individual dummy variables didn’t contribute to the tree splits. This result, therefore, confirms that treating <code>zipCode</code> as numerical would indeed lead to misleading insights about its importance (or lack thereof), whereas one-hot encoding, while also showing zero importance in this shallow tree, at least correctly represents the variable’s categorical nature.</p>
-<ol start="2" type="1">
-<li><strong>R vs Python Implementation Analysis:</strong> Provide a thorough analysis of question 2, including investigation of the official documentation for both <code>rpart</code> (R) and <code>sklearn.tree.DecisionTreeRegressor</code> (Python). Your analysis should explain the technical differences and provide a reasoned opinion about which implementation handles categorical variables better. You do NOT have to run R-code.</li>
-</ol>
 </section>
 </section>
+</section>
+<section id="r-vs-python-implementation-analysis-provide-a-thorough-analysis-of-question-2-including-investigation-of-the-official-documentation-for-both-rpart-r-and-sklearn.tree.decisiontreeregressor-python.-your-analysis-should-explain-the-technical-differences-and-provide-a-reasoned-opinion-about-which-implementation-handles-categorical-variables-better.-you-do-not-have-to-run-r-code." class="level1">
+<h1>2. <strong>R vs Python Implementation Analysis:</strong> Provide a thorough analysis of question 2, including investigation of the official documentation for both <code>rpart</code> (R) and <code>sklearn.tree.DecisionTreeRegressor</code> (Python). Your analysis should explain the technical differences and provide a reasoned opinion about which implementation handles categorical variables better. You do NOT have to run R-code.</h1>
 </section>
 <section id="answer-1" class="level1">
 <h1>Answer</h1>
@@ -378,9 +378,11 @@ dtype: float64</code></pre>
 </blockquote>
 <p>— <em>Excerpt from Scikit-learn User Guide, section “3.3. Preprocessing data”</em></p>
 <p>This quote, while general to all estimators, underscores that scikit-learn’s design philosophy mandates numerical input for features, thus requiring categorical variables to be pre-processed into a numerical format before being fed to <code>DecisionTreeRegressor</code>.</p>
-<ol start="3" type="1">
-<li><strong>Professional Presentation:</strong> Your discussion answers should be written in a professional, engaging style that would be appropriate for a business audience learning about one-hot encoding and decision trees. Avoid technical jargon and focus on practical implications. Include a specific quote from the official documentation of <code>sklearn.tree.DecisionTreeRegressor</code> that supports your analysis.</li>
-</ol>
+</section>
+</section>
+</section>
+<section id="professional-presentation-your-discussion-answers-should-be-written-in-a-professional-engaging-style-that-would-be-appropriate-for-a-business-audience-learning-about-one-hot-encoding-and-decision-trees.-avoid-technical-jargon-and-focus-on-practical-implications.-include-a-specific-quote-from-the-official-documentation-of-sklearn.tree.decisiontreeregressor-that-supports-your-analysis." class="level1">
+<h1>3. <strong>Professional Presentation:</strong> Your discussion answers should be written in a professional, engaging style that would be appropriate for a business audience learning about one-hot encoding and decision trees. Avoid technical jargon and focus on practical implications. Include a specific quote from the official documentation of <code>sklearn.tree.DecisionTreeRegressor</code> that supports your analysis.</h1>
 <p><strong>Answer:</strong></p>
 <ul>
 <li><strong>R’s <code>rpart</code> Package Handling:</strong> <code>rpart</code> natively handles categorical (factor) variables without requiring explicit encoding. For a categorical variable with $k$ levels, it searches for the optimal <em>binary</em> split by evaluating all $2^{k-1}-1$ possible partitions of these levels into two subsets. This approach preserves the non-ordinal nature of categorical data, avoids increasing dimensionality, and results in interpretable splits that group related categories.</li>
@@ -395,7 +397,6 @@ dtype: float64</code></pre>
 <li><strong>Reasoned Opinion on Superiority:</strong> R’s <code>rpart</code> package offers a superior approach for modeling categorical variables in decision trees. Its native ability to consider optimal groupings of categorical levels is more statistically sound, leads to more robust and interpretable splits, and avoids the “curse of dimensionality” associated with one-hot encoding high-cardinality features. <code>sklearn</code>’s reliance on manual encoding can lead to suboptimal splits, increased model complexity, and less insightful interpretations.</li>
 <li><strong>Specific <code>sklearn</code> Quote Highlighting Weakness:</strong> The official scikit-learn documentation implicitly highlights this limitation by stating: &gt; “Decision trees in scikit-learn do not support categorical variables. All input variables are expected to be numerical, and the splitting process is based on numerical thresholds. Therefore, categorical features need to be preprocessed (e.g., one-hot encoded or label encoded) before training a Decision Tree Classifier or Regressor.”</li>
 </ul>
-</section>
 <section id="data-analysis-key-findings" class="level3">
 <h3 class="anchored" data-anchor-id="data-analysis-key-findings">Data Analysis Key Findings</h3>
 <ul>
@@ -415,7 +416,6 @@ dtype: float64</code></pre>
 <li>When working with datasets abundant in categorical variables, especially those with high cardinality, consider leveraging modeling environments or libraries (e.g., R’s <code>rpart</code>) that offer native support for categorical features to potentially gain more robust, interpretable, and computationally efficient decision tree models.</li>
 <li>If constrained to <code>sklearn</code>, explore advanced encoding techniques beyond simple one-hot encoding (e.g., target encoding, frequency encoding, or specialized libraries for categorical features) to mitigate the challenges of increased dimensionality and suboptimal splits when building tree-based models.</li>
 </ul>
-</section>
 </section>
 </section>
 
